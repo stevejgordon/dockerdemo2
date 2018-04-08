@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
@@ -8,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace FrontEndService.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("")]
     public class ValuesController : Controller
     {
         private readonly EndpointsConfig _endpointsConfig;
@@ -25,7 +26,7 @@ namespace FrontEndService.Controllers
             {
                 HttpResponseMessage result;
 
-                using (var client = new HttpClient())
+                using (var client = new HttpClient()) // don't use HTTP client like this in production! #demoware!
                 {
                     var url = string.Concat(_endpointsConfig.Backend, "/api/values");
                     var request = new HttpRequestMessage(HttpMethod.Get, url);
@@ -43,7 +44,7 @@ namespace FrontEndService.Controllers
                     return Ok(items);
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 // handle errors
             }
