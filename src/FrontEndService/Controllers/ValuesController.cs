@@ -44,7 +44,7 @@ namespace FrontEndService.Controllers
                     return Ok(items);
                 }
             }
-            catch(Exception ex)
+            catch
             {
                 // handle errors
             }
