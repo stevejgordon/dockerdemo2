@@ -1,4 +1,4 @@
-FROM microsoft/aspnetcore-build:2.0
+FROM microsoft/dotnet:2.1-sdk
 
 WORKDIR /app
 
@@ -6,4 +6,6 @@ COPY . .
 
 RUN dotnet build
 
-ENTRYPOINT ["dotnet", "run", "--no-launch-profile"]
+EXPOSE 80
+
+ENTRYPOINT ["dotnet", "run"]
